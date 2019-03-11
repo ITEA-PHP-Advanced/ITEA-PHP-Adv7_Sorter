@@ -1,9 +1,9 @@
 <?php
 
 $header = <<<HEADER
-This file is part of the "default-project" package.
+This file is part of the "sorter" package.
 
-(c) Vladimir Kuprienko <vldmr.kuprienko@gmail.com>
+(c) Volodymyr Kupriienko <vladimir.kuprienko@itea.ua>
 
 For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.
@@ -21,7 +21,7 @@ return \PhpCsFixer\Config::create()
         'array_syntax' => [
             'syntax' => 'short',
         ],
-        'blank_line_after_opening_tag' => true,
+        'blank_line_after_opening_tag' => false,
         'blank_line_before_statement' => [
             'statements' => [
                 'for',
@@ -103,6 +103,8 @@ return \PhpCsFixer\Config::create()
         'trailing_comma_in_multiline_array' => true,
         'yoda_style' => true,
         'new_with_braces' => true,
+        // PHP 7.x only
+        'declare_strict_types' => true,
     ])
     ->setFinder($finder)
 ;

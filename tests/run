@@ -1,6 +1,36 @@
 #!/usr/bin/env php
 <?php
 
+use Greeflas\Sorter\Factory as SorterFactory;
+use Greeflas\Sorter\Strategy\Factory as StrategyFactory;
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
+$numbers = [45, 78, 1, 58, 102, 4, 8, 0];
+$strings = ['ddd', 'aaa', 'ccc', 'bbb'];
 
+$strategyFactory = new StrategyFactory();
+$sorterFactory = new SorterFactory($strategyFactory);
+$sorter = $sorterFactory->create();
+
+\var_dump(
+    'Dummy',
+    $sorter->sort($numbers),
+    $sorter->sort($strings),
+);
+
+$sorter->setSortStrategy($strategyFactory->createAsc());
+
+\var_dump(
+    'Ascending',
+    $sorter->sort($numbers),
+    $sorter->sort($strings),
+);
+
+$sorter->setSortStrategy($strategyFactory->createDesc());
+
+\var_dump(
+    'Descendingly',
+    $sorter->sort($numbers),
+    $sorter->sort($strings),
+);
